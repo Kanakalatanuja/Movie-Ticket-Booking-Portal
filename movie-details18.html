@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Listings</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            color: #fff; /* Set text color to white for better contrast */
+            background: url('images/bg2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            text-align: center;
+            background: transparent; /* Ensure no background color is applied */
+        }
+        h1 {
+            margin-top: 1px;
+            margin-bottom: 100px;
+            font-size: 36px;
+            color: #fff; /* Set text color to white */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional: Add a text shadow for better readability */
+        }
+        .categories {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: transparent; /* Ensure no background color is applied */
+        }
+        .category {
+            margin-bottom: 20px;
+            background: transparent; /* Ensure no background color is applied */
+        }
+        .category a {
+            font-size: 24px;
+            color: #fff; /* Set link text color to white */
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: color 0.3s, border-bottom 0.3s;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional: Add a text shadow for better readability */
+        }
+        .category a:hover {
+            color: #ff0; /* Optional: Change hover text color */
+            border-bottom: 2px solid #ff0; /* Optional: Add underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Details</h1>
+        <div class="movie-details">
+            <img id="movie-img" src="C:\Users\Tanuja\Desktop\movie website\images\img19.png" alt="Movie Image">
+            <h2 id="movie-title">Pyaar Ke Do Naam</h2>
+            <p><strong>Release Year:2024</strong> <span id="movie-release-year"></span></p>
+            <p><strong>Cast:Bhavya Sachdeva,Ankita Sahu</strong> <span id="movie-cast"></span></p>
+            <p><strong>Rating:2.5/5</strong> <span id="movie-rating"></span></p>
+            <p><strong>Reviews:While the film attempts to explore philosophical themes within a love story, the execution falls short. 'Pyar Ke Do Naam' ultimately fizzles out, leaving a feeling of missed potential.</strong> <span id="movie-reviews"></span></p>
+            <button onclick="bookTicket()">Book Ticket</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const movieId = urlParams.get('movie');
+            const movieData = {
+                1: {
+                    title: 'Bollywood Movie 1',
+                    releaseYear: 2023,
+                    cast: 'Actor 1, Actor 2, Actor 3',
+                    rating: '4.5/5',
+                    reviews: 'This is another great Tollywood movie.',
+                    imgSrc: 'C:/Users/Tanuja/Desktop/movie website/images/tollywood1.jpg'
+                },
+                2: {
+                    title: 'Bollywood Movie 2',
+                    releaseYear: 2023,
+                    cast: 'Actor 1, Actor 2, Actor 3',
+                    rating: '4.5/5',
+                    reviews: 'This is another great Tollywood movie.',
+                    imgSrc: 'C:/Users/Tanuja/Desktop/movie website/images/tollywood2.jpg'
+                }
+                // Add more movie data as needed
+            };
+
+            const movie = movieData[movieId];
+            if (movie) {
+                document.getElementById('movie-img').src = movie.imgSrc;
+                document.getElementById('movie-title').textContent = movie.title;
+                document.getElementById('movie-release-year').textContent = movie.releaseYear;
+                document.getElementById('movie-cast').textContent = movie.cast;
+                document.getElementById('movie-rating').textContent = movie.rating;
+                document.getElementById('movie-reviews').textContent = movie.reviews;
+            }
+        });
+
+        function bookTicket() {
+            window.location.href = 'theatre-selection.html'; // Adjust this URL to your booking page
+        }
+    </script>
+</body>
+</html>
